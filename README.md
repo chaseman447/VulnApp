@@ -55,15 +55,7 @@ Users can access the protected profile screen without validating the token.
 
 📛 **Why it’s bad:** No proper session or access control allows unauthorized access to user data.
 
----
 
-### 🧠 6. No Code Obfuscation (Optional)
-🔖 **OWASP M9: Reverse Engineering**  
-Obfuscation is not enabled in the Flutter build.
-
-📛 **Why it’s bad:** Reverse engineering is easier, revealing business logic, API keys, and secrets.
-
----
 
 ## 📊 OWASP Mobile Top 10 Coverage
 
@@ -74,7 +66,6 @@ Obfuscation is not enabled in the Flutter build.
 | Logging Sensitive Info         | M2: Insecure Data Storage                | `LoginScreen`        |
 | Insecure Network Communication | M3: Insecure Communication               | `InsecureNetwork`    |
 | Broken Authentication Flow     | M5: Insufficient Authentication          | `ProfileScreen`      |
-| No Obfuscation (Optional)      | M9: Reverse Engineering                  | Release build config |
 
 ---
 
