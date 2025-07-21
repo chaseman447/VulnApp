@@ -1,16 +1,87 @@
-# vulnapp
+# 🔐 VulnApp – Vulnerable Mobile App for Security Testing
 
-A new Flutter project.
+**VulnApp** is a deliberately insecure mobile application built with Flutter. It is designed for **educational purposes**, helping developers, pentesters, and students understand common mobile vulnerabilities by demonstrating them in a real, working app.
 
-## Getting Started
+> ⚠️ **Disclaimer:** This app is intentionally insecure and should never be used in production. Use only in controlled environments.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 📲 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Simulates real-world mobile security flaws
+- Built with modern Flutter (Dart)
+- Clean UI with vulnerability showcase dashboard
+- Modular structure for easy extension
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🧪 Simulated Vulnerabilities
+
+### 🔐 1. Hardcoded Credentials
+🔖 **OWASP M10: Extraneous Functionality**  
+The login screen uses hardcoded username (`admin`) and password (`1234`) in the app code.
+
+📛 **Why it’s bad:** Attackers can reverse engineer the APK to extract credentials and gain access.
+
+---
+
+### 💾 2. Insecure Local Storage
+🔖 **OWASP M2: Insecure Data Storage**  
+Sensitive data like tokens and passwords are saved in plaintext using `SharedPreferences`.
+
+📛 **Why it’s bad:** Data can be easily accessed by rooted devices or forensic tools.
+
+---
+
+### 🪵 3. Logging Sensitive Information
+🔖 **OWASP M2: Insecure Data Storage**  
+Credentials entered by the user are printed to the device logs.
+
+📛 **Why it’s bad:** Logs can be viewed via `adb logcat`, exposing sensitive data to anyone with USB debugging.
+
+---
+
+### 🌐 4. Insecure Network Communication
+🔖 **OWASP M3: Insecure Communication**  
+The app uses HTTP instead of HTTPS for API requests.
+
+📛 **Why it’s bad:** Traffic can be intercepted or modified using Man-in-the-Middle (MITM) attacks.
+
+---
+
+### 🔓 5. Broken Authentication Flow
+🔖 **OWASP M5: Insufficient Authentication/Authorization**  
+Users can access the protected profile screen without validating the token.
+
+📛 **Why it’s bad:** No proper session or access control allows unauthorized access to user data.
+
+---
+
+### 🧠 6. No Code Obfuscation (Optional)
+🔖 **OWASP M9: Reverse Engineering**  
+Obfuscation is not enabled in the Flutter build.
+
+📛 **Why it’s bad:** Reverse engineering is easier, revealing business logic, API keys, and secrets.
+
+---
+
+## 📊 OWASP Mobile Top 10 Coverage
+
+| Vulnerability                   | OWASP Category                           | Present In           |
+|--------------------------------|------------------------------------------|----------------------|
+| Hardcoded Credentials          | M10: Extraneous Functionality            | `LoginScreen`        |
+| Insecure Local Storage         | M2: Insecure Data Storage                | `InsecureStorage`    |
+| Logging Sensitive Info         | M2: Insecure Data Storage                | `LoginScreen`        |
+| Insecure Network Communication | M3: Insecure Communication               | `InsecureNetwork`    |
+| Broken Authentication Flow     | M5: Insufficient Authentication          | `ProfileScreen`      |
+| No Obfuscation (Optional)      | M9: Reverse Engineering                  | Release build config |
+
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/your-username/VulnApp.git
+cd VulnApp
+flutter pub get
+flutter run
